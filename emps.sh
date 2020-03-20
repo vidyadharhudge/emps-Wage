@@ -11,7 +11,7 @@ function check_attend()
  
   esac
 }
-function hour(){
+function gethour(){
 val="$( check_attend $(()) )"
 if [ $val -eq 0 ]
 then
@@ -31,7 +31,7 @@ fi
 function check_Employee_wage()
 {
 
-         val=$( hour $(()) )
+         val=$( gethour $(()) )
          emp_Daily_wages=$((20*val))
          echo $emp_Daily_wages
 
@@ -45,7 +45,7 @@ function cal_wage_for_month()
     total_wage=1
   while [[ $count -le 20 ]] && [[ $hour -le 100 ]]
   do
-       hour=$( hour $(()) )
+       hour=$( gethour $(()) )
        calculatinghour=$(( $calculatinghour + hour ))
        res=$( check_Employee_wage $(()) )
        total_wage=$(( $total_wage + res ))
