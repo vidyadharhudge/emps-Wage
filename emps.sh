@@ -1,4 +1,5 @@
-#!/bin/bash -x 
+#!/bin/bash 
+declare -A storeing_Wages 
 echo "Welcome to employee wage computation"
 function check_attend()
 {
@@ -56,8 +57,9 @@ function cal_wage_for_month()
        break;
   fi
   done
-       echo "$total_wage"
-       echo ${storeing_Wages[@]}
+       echo "total wages are:$total_wage"
+        echo "total days are:${!storeing_Wages[@]}"
+       echo "daily wages are:${storeing_Wages[@]}"
 
  }
 cal_wage_for_month
