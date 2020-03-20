@@ -1,4 +1,4 @@
-#!/bin/bash  -x 
+#!/bin/bash  
 echo "Welcome to employee wage computation"
 function check_attend()
 {
@@ -20,7 +20,7 @@ then
 	0)
 		hours=8
 	echo $hours ;;
-1)	
+   1)	
 		hours=4
 		echo $hours ;;
 esac
@@ -31,7 +31,7 @@ fi
 function check_Employee_wage()
 {
 
-val=$( hour $(()) )
+         val=$( hour $(()) )
          emp_Daily_wages=$((20*val))
          echo $emp_Daily_wages
 
@@ -39,15 +39,21 @@ val=$( hour $(()) )
 
 function cal_wage_for_month()
 {
-   count=0
-   total_wage=1
- while [ $count -le 20 ]
- do
-       res="$( check_Employee_wage $(()) )"
-       total_wage=$(( $total_wage + $res ))
+    count=0
+    hour=0
+    calculatinghour=0
+    total_wage=1
+  while [[ $count -le 20 ]] && [[ $hour -le 100 ]]
+  do
+       hour=$( hour $(()) )
+       calculatinghour=$(( $calculatinghour + hour ))
+       res=$( check_Employee_wage $(()) )
+       total_wage=$(( $total_wage + res ))
        ((count++))
-done
+  done
        echo "$total_wage"
+       
 
  }
-result=$( cal_wage_for_month $(()) )
+result="$( cal_wage_for_month $(()) )"
+echo $result
