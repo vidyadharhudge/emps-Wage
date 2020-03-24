@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash -x 
 declare -A storeing_Wages 
 echo "Welcome to employee wage computation"
 function Check_Attend()
