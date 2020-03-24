@@ -3,8 +3,8 @@ declare -A storeing_Wages
 echo "Welcome to employee wage computation"
 function Check_Attend()
 {
-     attend=$((RANDOM%2))
-     case $attend in
+     Attend=$((RANDOM%2))
+     case $Attend in
      0) 
          echo "0" ;;
      1) 
@@ -15,17 +15,17 @@ function Check_Attend()
 
 function GetHour()
 {
-    val="$( Check_Attend $(()) )"
-    if [ $val -eq 0 ]
+    Val="$( Check_Attend $(()) )"
+    if [ $Val -eq 0 ]
     then
-  	 val1=$((RANDOM%2))
-	 case $val1 in 
+  	 Val1=$((RANDOM%2))
+	 case $Val1 in 
   	 0)
-	   	hours=8
-	      echo $hours ;;
+	   	Hours=8
+	      echo $Hours ;;
     1)	
-	   	hours=4
-		   echo $hours ;;
+	   	Hours=4
+		   echo $Hours ;;
     esac
     fi
 }
@@ -34,34 +34,34 @@ function GetHour()
 function Check_Employee_Wage()
 {
 
-    val=$( GetHour $(()) )
-    Emp_Daily_Wages=$((20*val))
+    Val=$( GetHour $(()) )
+    Emp_Daily_Wages=$((20*Val))
     echo $Emp_Daily_Wages
 
 }
 
 function Calculate_Wage_For_Month()
 {
-     count=0
-     hour=0
-     calculatinghour=0
-     total_wage=1
-  while [[ $count -le 20 ]] && [[ $hour -le 100 ]]
+     Count=0
+     Hour=0
+     CalculatingHour=0
+     Total_Wage=1
+  while [[ $Count -le 20 ]] && [[ $Hour -le 100 ]]
   do
-       hour=$( GetHour $(()) )
-       calculatinghour=$(( $calculatinghour + hour ))
-       res=$( Check_Employee_Wage $(()) )
-       total_wage=$(( $total_wage + res ))
-       storeing_Wages[$count]=$res
-       ((count++))
-       if [ $count -eq 20 ]
+       Hour=$( GetHour $(()) )
+       CalculatingHour=$(( $CalculatingHour + Hour ))
+       Res=$( Check_Employee_Wage $(()) )
+       Total_Wage=$(( $Total_Wage + Res ))
+       Storeing_Wages[$Count]=$Res
+       ((Count++))
+       if [ $Count -eq 20 ]
        then
             break;
        fi
        done
-             echo "total wages are:$total_wage"
-             echo "total days are:${!storeing_Wages[@]}"
-             echo "daily wages are:${storeing_Wages[@]}"
+             echo "total wages are:$Total_Wage"
+             echo "total days are:${!Storeing_Wages[@]}"
+             echo "daily wages are:${Storeing_Wages[@]}"
 
  }
 Calculate_Wage_For_Month
