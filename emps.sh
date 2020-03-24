@@ -1,4 +1,4 @@
-#!/bin/bash -x 
+#!/bin/bash 
 declare -A storeing_Wages 
 echo "Welcome to employee wage computation"
 function Check_Attend()
@@ -13,7 +13,7 @@ function Check_Attend()
      esac
 }
 
-function gethour()
+function GetHour()
 {
     val="$( Check_Attend $(()) )"
     if [ $val -eq 0 ]
@@ -34,7 +34,7 @@ function gethour()
 function Check_Employee_Wage()
 {
 
-    val=$( gethour $(()) )
+    val=$( GetHour $(()) )
     Emp_Daily_Wages=$((20*val))
     echo $Emp_Daily_Wages
 
@@ -48,7 +48,7 @@ function Calculate_Wage_For_Month()
      total_wage=1
   while [[ $count -le 20 ]] && [[ $hour -le 100 ]]
   do
-       hour=$( gethour $(()) )
+       hour=$( GetHour $(()) )
        calculatinghour=$(( $calculatinghour + hour ))
        res=$( Check_Employee_Wage $(()) )
        total_wage=$(( $total_wage + res ))
